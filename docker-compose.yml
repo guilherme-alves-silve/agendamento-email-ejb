@@ -10,9 +10,11 @@ services:
       MYSQL_USER: agendamento_email
       MYSQL_DATABASE: agendamento_email_db
       MYSQL_ROOT_PASSWORD: agendamento_email_password
+    ports:
+      - 3306:3306
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8081:8081

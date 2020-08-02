@@ -2,6 +2,7 @@ package br.com.guilhermealvessilve.agendamentoemail.exception.mapper;
 
 import br.com.guilhermealvessilve.agendamentoemail.dto.MensagemErroDto;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -19,7 +20,7 @@ public class ConstraintExceptionMapper implements ExceptionMapper<ConstraintViol
                 .entity(MensagemErroDto.build(
                         ex.getConstraintViolations()
                                 .stream()
-                                .map(constraintViolation -> constraintViolation.getMessage())
+                                .map(ConstraintViolation::getMessage)
                                 .collect(Collectors.toList())))
                 .build();
     }

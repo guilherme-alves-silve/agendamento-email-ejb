@@ -44,9 +44,9 @@ public class AgendamentoEmailDto {
 		this.mensagem = mensagem;
 	}
 
-	public static AgendamentoEmail build(AgendamentoEmailDto dto) {
+	public static AgendamentoEmail build(final AgendamentoEmailDto dto) {
 
-		AgendamentoEmail agendamentoEmail = new AgendamentoEmail();
+		final var agendamentoEmail = new AgendamentoEmail();
 		agendamentoEmail.setEmail(dto.getEmail());
 		agendamentoEmail.setAssunto(dto.getAssunto());
 		agendamentoEmail.setMensagem(dto.getMensagem());

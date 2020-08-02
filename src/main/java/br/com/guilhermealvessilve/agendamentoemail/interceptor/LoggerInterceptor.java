@@ -15,12 +15,12 @@ public class LoggerInterceptor {
 	
 	@AroundInvoke
 	public Object treatException(InvocationContext context) throws Exception {
-		
-		Logger logger = Logger.getLogger(context.getTarget().getClass().getName());
+
+		final var logger = Logger.getLogger(context.getTarget().getClass().getName());
 		
 		try {
 			return context.proceed();		
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 			if(ex instanceof ConstraintViolationException) {
 				logger.info(ex.getMessage());
 			} else {

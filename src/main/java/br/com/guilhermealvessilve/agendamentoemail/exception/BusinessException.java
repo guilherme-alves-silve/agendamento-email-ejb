@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class BusinessException extends Exception{
 	
-	private List<String> mensagens;
+	private final List<String> mensagens;
 	
 	public BusinessException() {
 		super();
@@ -25,6 +25,6 @@ public class BusinessException extends Exception{
 	}
 
 	public void addMensagem(String mensagem) {
-		this.mensagens.add(Objects.requireNonNull(mensagem, "mensagem não pode ser nulo!"));
+		this.mensagens.add(Objects.requireNonNull(mensagem, "mensagem não pode ser nula!"));
 	}
 }

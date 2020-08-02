@@ -41,7 +41,7 @@ public class AgendamentoEmailBusiness {
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void salva(@Valid AgendamentoEmailDto dto) throws BusinessException {
 
-		final AgendamentoEmail agendamentoEmail = AgendamentoEmailDto.build(dto);
+		final var agendamentoEmail = AgendamentoEmailDto.build(dto);
 
 		final boolean emailJaAgendado = !dao
 				.listaPorEmail(agendamentoEmail.getEmail())
@@ -66,7 +66,7 @@ public class AgendamentoEmailBusiness {
 	 
 	 public void enviaEmail(final AgendamentoEmail agendamentoEmail) {
 		 try {
-	       MimeMessage mensagem = new MimeMessage(sessaoEmail);
+	       final var mensagem = new MimeMessage(sessaoEmail);
 	       mensagem.setFrom(sessaoEmail.getProperty(EMAIL_FROM));
 	       mensagem.setRecipients(Message.RecipientType.TO, agendamentoEmail.getEmail());
 	       mensagem.setSubject(agendamentoEmail.getAssunto());

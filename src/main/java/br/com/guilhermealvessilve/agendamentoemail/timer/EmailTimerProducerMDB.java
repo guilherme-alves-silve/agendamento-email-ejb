@@ -11,7 +11,7 @@ import javax.jms.JMSContext;
 import javax.jms.Queue;
 
 @Singleton
-public class EmailProducerMDB {
+public class EmailTimerProducerMDB {
 	
 	@Inject
 	private AgendamentoEmailBusiness agendamentoEmailBusiness;
@@ -25,9 +25,8 @@ public class EmailProducerMDB {
 	
 	@Schedule(hour="*",minute="*")
 	public void enviaEmailsAgendamentoAFila() {
-		
+
 		agendamentoEmailBusiness.listaNaoEnviados()
-			.stream()
 			.forEach(agendamentoEmail-> {
 				context.createProducer().send(queue, agendamentoEmail);
 				agendamentoEmailBusiness.marcaEnviadas(agendamentoEmail);

@@ -4,6 +4,7 @@ import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.inject.Inject;
 import javax.jms.JMSException;
+import javax.jms.Message;
 import javax.jms.MessageListener;
 
 import br.com.guilhermealvessilve.agendamentoemail.business.AgendamentoEmailBusiness;
@@ -23,9 +24,9 @@ public class EmailConsumerMDB implements MessageListener {
     private AgendamentoEmailBusiness agendamentoEmailBusiness;
 
     @Override
-    public void onMessage(javax.jms.Message message) {
+    public void onMessage(final Message message) {
        try {
-		   AgendamentoEmail agendamentoEmail = message.getBody(AgendamentoEmail.class);
+           final var agendamentoEmail = message.getBody(AgendamentoEmail.class);
 		   agendamentoEmailBusiness.enviaEmail(agendamentoEmail);
        } catch (JMSException e) {
     	   throw new RuntimeException(e);

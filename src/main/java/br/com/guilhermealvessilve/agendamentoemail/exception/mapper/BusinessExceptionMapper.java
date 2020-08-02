@@ -11,7 +11,7 @@ import javax.ws.rs.ext.Provider;
 public class BusinessExceptionMapper  implements ExceptionMapper<BusinessException> {
 
 	@Override
-	public Response toResponse(BusinessException exception) {
+	public Response toResponse(final BusinessException exception) {
 		return Response
                 .status(Response.Status.BAD_REQUEST)
                 .entity(MensagemErroDto.build(exception.getMensagens()))

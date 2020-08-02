@@ -5,7 +5,6 @@ import br.com.guilhermealvessilve.agendamentoemail.entity.AgendamentoEmail;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Stateless
@@ -30,7 +29,7 @@ public class AgendamentoEmailDao {
 
 	public List<AgendamentoEmail> listaPorEmail(final String email) {
 		
-		TypedQuery<AgendamentoEmail> query = entityManager.createQuery(
+		final var query = entityManager.createQuery(
 				"SELECT a FROM AgendamentoEmail a WHERE a.email =:email AND a.enviado = false",
 				AgendamentoEmail.class);
 		query.setParameter("email", email);
@@ -40,7 +39,7 @@ public class AgendamentoEmailDao {
 	
     public List<AgendamentoEmail> listaNaoEnviados() {
 
-		TypedQuery<AgendamentoEmail> query = entityManager.createQuery(
+		final var query = entityManager.createQuery(
 				"SELECT a FROM AgendamentoEmail a WHERE a.enviado = false",
 				AgendamentoEmail.class);
 		return query.getResultList();

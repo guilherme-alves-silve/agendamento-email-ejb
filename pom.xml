@@ -11,7 +11,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <jakartaee>8.0</jakartaee>
-        <junit>3.8.1</junit>
+        <junit>4.13.1</junit>
         <log4j-core>2.13.2</log4j-core>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
